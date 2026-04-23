@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Компютерна гра про Україну - KALYNA RP GAMES</title>
+<link href="images/favicon.png" rel="icon" sizes="64x64" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="css/swiper-bundle.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<head>
+<!-- Эти теги подсказывают Google, как называть сайт -->
+<meta content="KALYNA RP" name="application-name"/>
+<meta content="KALYNA RP" property="og:site_name"/>
+<meta content="KALYNA RP – Комп'ютерна гра про Україну" property="og:title"/>
+<meta content="Рольова гра, нові пригоди, український стиль. Приєднуйся до KALYNA RP!" property="og:description"/>
+</head>
+<style>
+        body {
+            background: #070418 !important;
+        }
+        .preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            background: #070418;
+        }
+
+        .preload-logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            width: 210px;
+            height: 100px;
+            opacity: 0;
+            /* overflow: hidden; */
+        }
+        .wrapper, .container, .main, section, header, footer, .page-home, .why-section, .news-section, .gallery, .how, .sys-req-wrapper {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
+        /* Стили для cookie-уведомления */
+        .cookie-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            right: 32px;
+            left: auto;
+            bottom: 32px;
+            margin: 0;
+            width: 790px;
+            max-width: 89vw;
+            min-width: 0;
+            background: #181922;
+            color: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+            padding: 22px 32px 22px 22px;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .cookie-container.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .cookie-left {
+            display: flex;
+            align-items: center;
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .cookie-image {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #ff5c2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            padding: 7px;
+            flex-shrink: 0;
+        }
+        .cookie-text {
+            font-size: 1rem;
+            color: #d1d1d1;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+        .cookie-right {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+        .cookie-btn {
+            border: none;
+            outline: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 28px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+        .accept-btn {
+            background: linear-gradient(90deg, #ff5c2a 0%, #ff7b2a 100%);
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(255,92,42,0.15);
+        }
+        .accept-btn:hover {
+            background: linear-gradient(90deg, #ff7b2a 0%, #ff5c2a 100%);
+        }
+        .cancel-btn {
+            background: #23242d;
+            color: #d1d1d1;
+        }
+        .cancel-btn:hover {
+            background: #2c2d38;
+            color: #fff;
+        }
+        @media (max-width: 700px) {
+            .cookie-container {
+                max-width: 95vw;
+                min-width: 0;
+                right: 2vw;
+                padding: 14px 8px 14px 8px;
+            }
+            .cookie-left {
+                flex-direction: row;
+            }
+        }
+        @media (max-width: 500px) {
+            .cookie-container {
+                flex-direction: column;
+                align-items: flex-start;
+                right: 0;
+                left: 0;
+                bottom: 0;
+                border-radius: 0;
+                max-width: 100vw;
+                min-width: 0;
+                padding: 10px 4px;
+            }
+            .cookie-right {
+                width: 100%;
+                justify-content: flex-end;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- /DDoS Check Block -->
+<div id="preloader" style="position:fixed;z-index:99999;top:0;left:0;width:100vw;height:100vh;background:#070418;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+<img alt="Ukraine GTA Logo" src="images/logo (2).png" style="width:320px;max-width:90vw;margin-bottom:32px;"/>
+<div style="color:#fff;font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:800;text-align:center;margin-bottom:18px;text-shadow:0 2px 8px #000;">
+      Обробляємо ваш запит, будь ласка, зачекайте...
+    </div>
+<div style="color:#b0b6c3;font-size:1rem;margin-bottom:40px;text-align:center;">
+      Перевіряємо, людина чи ви. Це може зайняти декілька секунд.
+    </div>
+<div style="position:absolute;bottom:60px;left:0;width:100%;text-align:center;color:#b0b6c3;font-size:0.95rem;">
+      IP: <span id="preloader-ip">...</span> / CF RAY: 95a7d808aad734d0
+    </div>
+<div style="position:absolute;bottom:20px;left:0;width:100%;text-align:center;">
+<span style="display:inline-block;background:#232b3a;padding:8px 24px;border-radius:24px;color:#fff;font-weight:600;font-family:'Montserrat',sans-serif;font-size:1.1rem;box-shadow:0 2px 8px #000;">
+<svg height="22" style="vertical-align:middle;margin-right:8px;" viewbox="0 0 24 24" width="22"><path d="M12 2l7 4v6c0 5.25-3.5 10-7 10s-7-4.75-7-10V6z" fill="#fff"></path></svg> DDoS protection
+      </span>
+</div>
+<div id="recaptcha-container" style="display:none; margin-top:32px; text-align:center;">
+<!-- Google reCAPTCHA v2 Checkbox -->
+<div style="display:inline-block;">
+<div class="g-recaptcha" data-callback="onRecaptchaSuccess" data-sitekey="6LcCOX4rAAAAAGtd5eGMxELNz58jo05sAmqhwddH"></div>
+</div>
+</div>
+</div>
+<script async="" defer="" src="https://www.google.com/recaptcha/api.js"></script>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Получаем IP и страну
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.ip) {
+          var ipSpan = document.getElementById('preloader-ip');
+          if (ipSpan) ipSpan.textContent = data.ip;
+        }
+        if (data && data.country === 'UA') {
+          // Украина — сразу впускаем
+          setTimeout(function() {
+            var preloader = document.getElementById('preloader');
+            if (preloader) {
+              preloader.classList.add('preloader-hide');
+              setTimeout(function() { preloader.style.display = 'none'; }, 700);
+            }
+          }, 1000);
+        } else {
+          // Не Украина — показываем капчу
+          document.getElementById('recaptcha-container').style.display = 'block';
+        }
+      })
+      .catch(() => {
+        // Если не удалось определить IP — показываем капчу
+        document.getElementById('recaptcha-container').style.display = 'block';
+      });
+  });
+  function onRecaptchaSuccess() {
+    var preloader = document.getElementById('preloader');
+    if (preloader) {
+      preloader.classList.add('preloader-hide');
+      setTimeout(function() { preloader.style.display = 'none'; }, 700);
+    }
+  }
+  </script>
+<style>
+    .preloader-hide {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.7s;
+    }
+  </style>
+<div class="wrapper page-home">
+<header class="header">
+<div class="container">
+<div class="header__inner">
+<div class="header__logo">
+<a href="index.html"><img alt="logo" class="header__logo-img" src="images/logo.png"/></a>
+</div>
+<nav class="nav-menu">
+<ul class="header-menu">
+<li class="header-menu__item"><a class="header-menu__item-link link active" href="index.html">Головна</a></li>
+<li class="header-menu__item"><a class="header-menu__item-link link" href="index.html">ЗАВАНТАЖИТИ</a></li>
+<li class="header-menu__item"><a class="header-menu__item-link link" href="https://forum-kalyna-rp.unaux.com/">Форум</a></li>
+<div class="custom-lang-selector">
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<title>Language Selector</title>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="lang-selector">
+<button class="lang-toggle" id="langToggle">
+<img alt="UA" id="langIcon" src="images/langs/uk.svg"/>
+<span id="langLabel">Українська</span>
+<svg viewbox="0 0 20 20"><path d="M5 8l5 5 5-5H5z"></path></svg>
+</button>
+<ul class="lang-menu" id="langMenu">
+<li data-asset="images/langs/uk.svg" data-href="uk/index.html" data-text="Українська" data-value="uk">
+<img alt="UA" src="images/langs/uk.svg"/> Українська
+      </li>
+<li data-asset="images/langs/en.svg" data-href="indexx.html" data-text="English" data-value="en">
+<img alt="EN" src="images/langs/en.svg"/> English
+      </li>
+</ul>
+</div>
+<script>
+    const toggle = document.getElementById('langToggle');
+    const menu = document.getElementById('langMenu');
+    const label = document.getElementById('langLabel');
+    const icon = document.getElementById('langIcon');
+
+    toggle.onclick = () => menu.classList.toggle('show');
+
+    document.querySelectorAll('.lang-menu li').forEach(li => {
+      li.onclick = () => {
+        icon.src = li.dataset.asset;
+        label.textContent = li.dataset.text;
+        window.location.href = li.dataset.href;
+      };
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.lang-selector')) menu.classList.remove('show');
+    });
+  </script>
+</body>
+</html>
+</div></ul>
+</nav>
+<a class="header__link-btn btn btn-grd-1" href="donate.php">СКОРО</a>
+<button class="burger-menu"><span></span></button>
+</div>
+</div>
+</header>
+<main class="main">
+<section class="hero">
+<div class="hero-decor hero-decor__top">
+<svg fill="none" height="59" viewbox="0 0 61 59" width="61" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.1945 14.669L7.86072 2.63966L8.11502 2.69781L21.7983 18.9264L30.482 28.9323L37.4798 36.9487L35.7951 44.3163L40.8516 40.9278L45.0805 43.4988L45.1167 42.1704L48.6189 43.2385L44.8405 41.0378L42.6821 37.6036L43.4231 36.7036L44.5297 37.6969C45.1229 38.2293 45.7642 38.7057 46.4453 39.1198C47.1706 39.5607 47.9376 39.929 48.7353 40.2193L49.5122 40.5021L49.9896 40.6112C50.686 40.7705 51.3602 41.0144 51.9972 41.3376L53.3488 42.4487L53.8212 43.8934L56.6405 45.6075L40.8166 51.6134L25.8718 57.2856L24.0626 57.0056L22.2534 56.7256L19.5942 56.6522L16.5644 57.0288L16.4844 56.2084L26.7936 49.7435L21.6132 50.163L10.8085 44.7516L10.1541 40.5918L20.3263 42.9179L8.85294 35.7495L8.01654 28.8747L18.0003 34.3657L3.89609 22.3184L2.33294 13.9407L20.6441 27.4847L10.1945 14.669Z" opacity="0.15" stroke="white" stroke-width="3"></path>
+</svg>
+</div>
+<div class="hero-decor hero-decor__bottom">
+<svg fill="none" height="48" viewbox="0 0 68 48" width="68" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.9954 11.7386L3.70665 2.32439L3.95271 2.26355L22.9249 10.3539L34.8368 15.2339L44.4155 19.1258L46.1782 26.2545L49.0818 21.1021L53.8756 21.4819L53.3256 20.3137L56.8312 19.7077L52.5903 19.4521L49.2151 17.4173L49.4641 16.3124L50.8587 16.6898C51.6063 16.8921 52.3711 17.0247 53.1431 17.0858C53.9653 17.151 54.7919 17.1348 55.6109 17.0376L56.4087 16.9428L56.8705 16.8286C57.5443 16.662 58.236 16.5786 58.93 16.5802L60.5887 16.9526L61.6308 17.9992L64.8266 18.2524L53.7276 30.3873L43.2452 41.8481L41.5532 42.3969L39.8612 42.9457L37.5222 44.0457L35.0587 45.6983L34.6303 45.0216L40.7444 34.9019L36.4339 37.5328L24.6927 37.5666L22.3046 34.2444L32.147 31.8107L19.0568 30.6131L15.3227 25.0152L26.3865 25.4097L8.87901 21.1307L3.85678 14.5471L25.6689 18.2834L10.9954 11.7386Z" opacity="0.05" stroke="white" stroke-width="3"></path>
+</svg>
+</div>
+<div class="container">
+<div class="hero__items">
+<div class="hero__item hero__item-content">
+<span class="hero-decor__text-top btn btn-grd-2">Компютерна гра про Україну</span>
+<h1 class="hero__title title-h1">
+<span class="accent-font gradient-1">Вирушай </span>
+<span>у реальну</span>
+<span class="gradient-2"> атмосферу </span>
+<span>GTA SA</span>
+</h1>
+<p class="hero__description description">
+                                Скачайте компьютерний лаунчер
+                            </p>
+<div class="hero__links">
+<a class="hero__link-btn btn btn-grd-1 btn-accent" href="http://45.145.52.238/web/KALYNA%20RP.exe" target="_blank">
+<span class="btn-accent__content">
+<span>РОЗПОЧАТИ ГРУ</span>
+<svg fill="none" height="16" viewbox="0 0 14 16" width="14" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.5333 7.07881L11.4666 5.79547L7.83325 8.82881V0.603806H6.16659V8.82881L2.53325 5.79547L1.46659 7.07881L6.99992 11.6871L12.5333 7.07881ZM0.333252 13.9371H13.6666V15.6038H0.333252V13.9371Z" fill="white" fill-rule="evenodd"></path>
+</svg>
+</span>
+</a>
+</div>
+</div>
+<div class="hero__item hero-social">
+<div class="hero-social__items">
+<div class="hero-social__item">
+<a class="hero-social__link hero-social__link-telegram" href="https://t.me/KALYNARPGTA" target="_blank">
+<span class="hero-social__icon hero-social__icon-telegram"></span>
+<span>Ми в Телеграмі</span>
+<p class="hero-social__text">
+<span class="hero-social__text-number">32</span>
+<span></span>
+<span class="text-min">підписників</span>
+</p>
+</a>
+</div>
+<div class="hero-social__item">
+<a class="hero-social__link hero-social__link-youtube" href="https://www.youtube.com/@KALYNA_GAME_officiall-ij" target="_blank">
+<span class="hero-social__icon hero-social__icon-youtube"></span>
+<span>Ми на YOUTUBE</span>
+<p class="hero-social__text">
+<span class="hero-social__text-number">100</span>
+<span>+</span>
+<span class="text-min">підписників</span>
+</p>
+</a>
+</div>
+</div>
+<span class="hero-decor__text-bottom">онлайн гра в GTA SA</span>
+</div>
+<img alt="phone-image" class="hero__img" src="images/hero-img.png"/>
+</div>
+</div>
+</section>
+<!DOCTYPE html>
+
+<html lang="ru">
+</html></main></div></body>
+</html>
+
+
+
+
+<div class="container">
+<div class="container">
+<div class="instruction-decor instruction-decor__top">
+</div>
+<div class="instruction-decor instruction-decor__bottom">
+</div>
+<div class="instruction-decor-line">
+</div>
+<div class="instruction__item instruction__item-step-1">
+<div class="instruction__links">
+
+
+</div>
+</div>
+<div class="instruction__item instruction__item-step-2">
+<h4 class="instruction__item-title title-h4">
+</h4>
+</div>
+</div>
+</div>
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Як завантажити гру</title>
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="how">
+<div class="container">
+<h2 class="title">
+<span class="title__white">Як </span><span class="text-gradient">ЗАВАНТАЖИТИ ГРУ</span>
+</h2>
+<div class="how__row">
+<div class="how__image">
+<img alt="Game characters" loading="lazy" src="images/how.webp"/>
+</div>
+<div class="how__content">
+<h3 class="subtitle">РОЗПОЧАТИ ГРУ<br/><strong>ДУЖЕ ЛЕГКО!</strong></h3>
+<p class="description">Інсталюйте наш лаунчер та ознайомтесь з інструкцією нижче!</p>
+<div class="how__download">
+<a href="http://45.145.52.238/web/KALYNA%20RP.exe" target="_blank">
+<img alt="Завантажити" src="images/play.svg"/>
+              РОЗПОЧАТИ ГРУ
+            </a>
+<div class="label-windows">
+<img alt="Windows only" src="images/windows.svg"/>
+<span>Доступно тільки для Windows</span>
+</div>
+</div>
+<div class="how__instruction">
+<h4 class="instruction-title text-gradient">Інструкція</h4>
+<ul class="instruction-list">
+<li>🔹 Натисніть кнопку “Завантажити” — почнеться завантаження .exe файлу.</li>
+<li>🔹 Відкрийте файл і пройдіть інсталяцію. Якщо драйвери вже встановлені — можна пропустити цей крок.</li>
+<li>🔹 Запустіть лаунчер та завантажте ігрові файли. Не закривайте лаунчер під час інсталяції.</li>
+<li>🔹 Після завершення оберіть сервер — і гайда в гру!</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>
+<section class="why-section">
+<div class="why-container">
+<h2 class="why-title">
+<span>ЧОМУ</span> <span class="gradient">ВАРТО ГРАТИ</span> <span>В</span><br/>
+<span class="gradient">KALYNA RP GAMES</span>
+</h2>
+<!-- Факт 1 -->
+<div class="why-block">
+<div class="why-text">
+<h3>Перший факт: <span class="gradient">УКРАЇНСЬКА МАПА</span></h3>
+<p>Ми розробляємо власну, унікальну карту вже майже рік. З перших хвилин гри ти зрозумієш, що знаходишся у рідній Україні, хоч і насправді перебуваєш за тисячі кілометрів від дому.</p>
+<p>Зараз у грі є такі міста:</p>
+<ul class="city-list">
+<li><img alt="Київ" src="images/city.svg"/> Київ</li>
+<li><img alt="Харків" src="images/city.svg"/> Харків</li>
+<li><img alt="Дніпро" src="images/city.svg"/> Дніпро</li>
+<li><img alt="Бориспіль" src="images/city.svg"/> Бориспіль</li>
+<li><img alt="Конча-Заспа" src="images/city.svg"/> Конча-Заспа</li>
+</ul>
+</div>
+<div class="why-image">
+<img alt="Ukraine Map" src="images/map.webp"/>
+<div class="watermark">KALYNA RP GAMES</div>
+</div>
+</div>
+<!-- Факт 2 -->
+<div class="why-block">
+<div class="why-text">
+<h3>Другий факт: <span class="gradient">РЕАЛІСТИЧНА ГРАФІКА</span></h3>
+<p>Завдяки сучасним модам та освітленню, наша графіка максимально наближена до реального життя. Ми використовуємо якісні текстури та ефекти, які дозволяють повністю зануритись у світ гри.</p>
+<p>Поринь у атмосферу з реалістичним небом, тінями та деталізацією.</p>
+</div>
+<div class="why-image">
+<img alt="Realistic Graphics" src="images/jobs%402x.webp"/>
+<div class="watermark">KALYNA RP GAMES</div>
+</div>
+</div>
+<!-- Факт 3 -->
+<div class="why-block">
+<div class="why-text">
+<h3>Третій факт: <span class="gradient">ВІТЧИЗНЯНІ ТА ІМПОРТНІ АВТОМОБІЛІ</span></h3>
+<p>В KALYNA RP GAMES ви можете знайти величезний вибір автомобілів, який задовольнить будь-який смак. Від вітчизняних моделей, що вражають надійністю та доступністю у ремонті.</p>
+<p>до імпортних авто з передовими технологіями та елегантним дизайном – у грі ви знайдете все, що потрібно для захоплюючих перегонів та випробування себе на дорозі.</p>
+</div>
+<div class="why-image">
+<img alt="Economy and Career" src="images/cars-big.webp"/>
+<div class="watermark">KALYNA RP GAMES</div>
+</div>
+</div>
+<div class="why-block">
+<div class="why-text">
+<h3>Четвертий факт: <span class="gradient">АТМОСФЕРА ТА КОРИСТЬ</span></h3>
+<p>🎯 Рівень рольової гри тут — <b>високий</b>, а головне — більшість гравців спілкуються <b>українською</b> мовою. Це створює унікальну атмосферу та робить гру максимально комфортною.</p>
+<p>📈 Подивись на графік — усе зрозуміло без слів!</p>
+<!-- SVG графік -->
+<div class="chart-svg">
+<svg viewbox="0 0 500 180" width="100%" xmlns="http://www.w3.org/2000/svg">
+<style>
+          .axis { stroke: #444; stroke-width: 1; }
+          .line-ua { stroke: #00ff00; stroke-width: 2.5; fill: none; }
+          .line-rp { stroke: #ffcc00; stroke-width: 2.5; fill: none; }
+          .label { fill: #fff; font-size: 14px; }
+          .legend-dot { r: 5; }
+        </style>
+<!-- Сітка -->
+<line class="axis" x1="50" x2="450" y1="160" y2="160"></line>
+<line class="axis" x1="50" x2="50" y1="40" y2="160"></line>
+<!-- Лінії -->
+<polyline class="line-rp" points="50,160 100,120 180,110 240,110 300,105 350,90 450,80"></polyline>
+<polyline class="line-ua" points="50,160 100,145 180,140 240,140 300,130 350,120 450,105"></polyline>
+<!-- Підписи -->
+<text class="label" fill="#ffcc00" x="460" y="80">Вис</text>
+<text class="label" fill="#00ff00" x="460" y="105">Україн</text>
+<!-- Легенда -->
+<circle class="legend-dot" cx="60" cy="20" fill="#ffcc00"></circle>
+<text class="label" x="70" y="25">Рівень рольової гри</text>
+<circle class="legend-dot" cx="60" cy="45" fill="#00ff00"></circle>
+<text class="label" x="70" y="50">Якою мовою розмовляє аудиторія</text>
+</svg>
+</div>
+</div>
+<div class="why-image">
+<img alt="Трамвай у снігу" src="images/big-img.webp"/>
+<div class="watermark">KALYNA RP GAMES</div>
+</div>
+</div>
+<div class="sys-req-wrapper">
+<details class="sys-req">
+<summary class="sys-req-title">
+<div class="sys-req-title-left">
+<svg fill="none" height="24" viewbox="0 0 24 24" width="24">
+<rect fill="#fff" height="18" opacity="0.1" rx="4" width="21" x="2" y="3"></rect>
+<path d="M3.77384 14V9.1H5.13184V10.934H6.87484V9.1H8.23284V14H6.87484V12.138H5.13184V14H3.77384Z..." fill="white"></path>
+</svg>
+<span>СИСТЕМНІ ВИМОГИ</span>
+</div>
+<span class="sys-req-icon">▼</span>
+</summary>
+<div class="sys-req-body">
+<div class="sys-req-col">
+<div class="sys-req-col-head">
+<img alt="мінімальні" src="images/low.svg"/>
+<span>Мінімальні</span>
+</div>
+<ul>
+<li><b>ОС:</b> Windows 7 SP1 x64 та вище</li>
+<li><b>Процесор:</b> Intel Core 2 Duo 2.2 GHz / AMD Phenom 2.2 GHz</li>
+<li><b>Відеокарта:</b> GTX 550 TI, ATI Radeon HD 4800</li>
+<li><b>ОЗП:</b> 8 ГБ DDR2</li>
+<li><b>Роздільна здатність:</b> 1280x720</li>
+<li><b>Звукова карта:</b> DirectX 9 сумісна</li>
+<li><b>Інтернет:</b> 8 мбіт/сек</li>
+<li><b>Місце:</b> 15 ГБ</li>
+</ul>
+</div>
+<div class="sys-req-col">
+<div class="sys-req-col-head">
+<img alt="рекомендовані" src="images/med.svg"/>
+<span>Рекомендовані</span>
+</div>
+<ul>
+<li><b>ОС:</b> Windows 11 x64</li>
+<li><b>Процесор:</b> Intel Core i5 3GHz / AMD Ryzen 3GHz</li>
+<li><b>Відеокарта:</b> GTX 760 TI, ATI Radeon HD 4800</li>
+<li><b>ОЗП:</b> 16 ГБ DDR3</li>
+<li><b>Роздільна здатність:</b> 1920x1080</li>
+<li><b>Звукова карта:</b> DirectX 9 сумісна</li>
+<li><b>Інтернет:</b> 100 мбіт/сек</li>
+<li><b>Місце:</b> 15 ГБ</li>
+</ul>
+</div>
+</div>
+</details>
+</div>
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Новини проекту</title>
+<link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
+<section class="news-section">
+<h2 class="section-title">Новини проєкту</h2>
+<div class="news-grid">
+<div class="news-card">
+<div class="news-image">
+<!-- Замінили посилання на локальний шлях до картинки -->
+<img alt="Новина 1" src="images/2_8_update.webp"/>
+</div>
+<div class="news-content">
+<h3 class="news-title">КРИМІНАЛЬНИЙ СВІТ 2</h3>
+<p class="news-text">Чекали на другу частину оновлення? Тоді приготуйтесь до оновлення, потужнометр якого зашкалює. Довгоочікувані гаражні місця у кланах, безмежна кількість нововведень та цікавих систем.</p>
+<div class="news-footer">
+<span>24.03.2025</span>
+<a class="news-link" href="index.html">Детальніше</a>
+</div>
+</div>
+</div>
+<div class="news-card">
+<div class="news-image">
+<!-- Замінили посилання на локальний шлях до картинки -->
+<img alt="Новина 2" src="images/criminal-world.webp"/>
+</div>
+<div class="news-content">
+<h3 class="news-title">КРИМІНАЛЬНИЙ СВІТ</h3>
+<p class="news-text">Весняна мапа, нові атмосферні роботи, автівки та багато чого іншого. Все це, ми підготували для вас, тому не гай ні хвилини та швидше переходь, щоб ознайомитися з усім, що на вас чекає в неймовірному оновленні.</p>
+<div class="news-footer">
+<span>29.02.2025</span>
+<a class="news-link" href="index.html">Детальніше</a>
+</div>
+</div>
+</div>
+<div class="news-card">
+<div class="news-image">
+<!-- Замінили посилання на локальний шлях до картинки -->
+<img alt="Новина 3" src="images/overhaul-of-transport-and-innovations.webp"/>
+</div>
+<div class="news-content">
+<h3 class="news-title">ЗНОС ТРАНСПОРТУ ТА НОВОВВЕДЕННЯ</h3>
+<p class="news-text">Любі гравці, за цей місяць ми виправили та покращили багато наших систем, ввели нові, а також добре попрацювали, щоб кожному з вас щодня ставало комфортніше проводити час на сервері. Тож давайте розберемо, що ми ввели та над чим ми попрацювали.</p>
+<div class="news-footer">
+<span>31.01.2025</span>
+<a class="news-link" href="index.html">Детальніше</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</body>
+</html>
+<div class="gallery">
+<!-- Заголовок галереи -->
+<h2 class="gallery__title">
+<span class="text-gradient">ГАЛЕРЕЯ</span><span class="title__white"> НАШИХ ГРАВЦІВ</span>
+</h2>
+<!-- Блок картинок -->
+<div class="gallery__grid">
+<a class="gallery__image" href="images/pages/main/gallery/@2x/6.webp">
+<img alt="демонстрація військової частини" loading="lazy" src="images/6.webp"/>
+</a>
+<a class="gallery__image" href="images/pages/main/gallery/@2x/5.webp">
+<img alt="демонстрація десантних операцій" loading="lazy" src="images/5.webp"/>
+</a>
+<a class="gallery__image" href="images/pages/main/gallery/@2x/1.webp">
+<img alt="демонстрація роботи залізниці" loading="lazy" src="images/1.webp"/>
+</a>
+<a class="gallery__image" href="images/pages/main/gallery/@2x/3.webp">
+<img alt="демонстрація банд" loading="lazy" src="images/3.webp"/>
+</a>
+<a class="gallery__image" href="images/pages/main/gallery/@2x/4.webp">
+<img alt="демонстрація роботи ЗМІ" loading="lazy" src="images/4.webp"/>
+</a>
+<a class="gallery__image" href="images/pages/main/gallery/@2x/7.webp">
+<img alt="демонстрація роботи поліції" loading="lazy" src="images/7.webp"/>
+</a>
+</div>
+</div>
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+        .telegram-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            background-color: #111;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease;
+        }
+
+        .telegram-btn:hover {
+            background-color: #1c1c1c;
+        }
+
+        .telegram-btn span {
+            color: #fff;
+            font-size: 14px;
+            margin-right: 10px;
+            white-space: nowrap;
+        }
+
+        .telegram-btn img {
+            width: 38px;
+            height: 38px;
+        }
+    </style>
+</head>
+<body>
+<a class="telegram-btn" href="https://t.me/tehpoderhkakalynarpbot" rel="nofollow" target="_blank">
+<span>Труднощі з грою? Тисни сюди</span>
+<img alt="Технічна підтримка" loading="lazy" src="images/telegram_icon.png"/>
+</a>
+</body>
+</html>
+</div>
+</section>
+<!DOCTYPE html>
+
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>KALYNA RP GAMES</title>
+<link href="styles.css" rel="stylesheet">
+</link></meta></meta></head>
+<body>
+<!-- Контент сайта тут -->
+<!-- FOOTER -->
+<footer class="footer">
+<div class="footer__container">
+<div class="footer__top">
+<a class="footer__logo" href="">
+<img alt="Logotype" loading="lazy" src="images/footer-logo.png">
+</img></a>
+<nav class="footer__menu">
+<!-- Навігація -->
+<div class="footer__column">
+<div class="footer__title">Навігація</div>
+<ul class="footer__list">
+<li><a href="https://forum-kalyna-rp.unaux.com/">Ігровий форум</a></li>
+<li><a href="">Ігровий магазин Cкоро</a></li>
+<li><a href="article.html">Новини</a></li>
+</ul>
+</div>
+<!-- Інформація -->
+<div class="footer__column">
+<div class="footer__title">Інформація</div>
+<ul class="footer__list">
+<li><a href="indexxx.html">Угода користувача</a></li>
+<li><a href="indexxxx.html">Правила користування</a></li>
+<li><a href="indexxxxx.html">Політика конфіденційності</a></li>
+</ul>
+</div>
+<!-- Контакти -->
+<div class="footer__column">
+<div class="footer__title">Контакти</div>
+<ul class="footer__list">
+<li><a href="mailto:kalyna.games.online@gmail.com"><span class="__cf_email__">[email protected]</span></a></li>
+<li><a href="">Технічна підтримка</a></li>
+<li><a href="pronas.html">Про нас</a></li>
+</ul>
+</div>
+</nav>
+<!-- Соцмережі -->
+<div class="footer__socials">
+<a class="footer__social" href="https://discord.gg/RuuC5bN63U">
+<img alt="Discord" src="images/discord.svg"> Discord
+        </img></a>
+<a class="footer__social" href="https://www.instagram.com/kalyna_rp/">
+<img alt="Instagram" src="images/instagram.svg"> Instagram
+        </img></a>
+<a class="footer__social" href="https://www.youtube.com/@KALYNA_GAME_officiall">
+<img alt="YouTube" src="images/youtube.svg"> YouTube
+        </img></a>
+<a class="footer__social" href="https://www.tiktok.com/@kalyna_rp_gta">
+<img alt="TikTok" src="images/tiktok.svg"> TikTok
+        </img></a>
+<a class="footer__social" href="https://t.me/KALYNARPGTA">
+<img alt="Telegram" src="images/telegram.svg"> Telegram
+        </img></a>
+</div>
+</div>
+<!-- Нижній блок -->
+<div class="footer-bottom">
+      KALYNA RP — український ролеплей проєкт, створений українськими розробниками на платформі MTA.<br/>
+      Усі права захищені © 2022 - 2025 <b>KALYNA RP GAMES</b>
+</div>
+</div>
+</footer>
+
+
+<!-- COOKIE NOTICE -->
+<div class="cookie-container" id="cookie-container">
+<div class="cookie-left">
+<img alt="cookie" class="cookie-image" src="images/cookie.webp"/>
+<div class="cookie-text">
+        Ми використовуємо сторонні файли cookie для персоналізації вашого досвіду використання сайту.
+      </div>
+</div>
+<div class="cookie-right">
+<button class="cookie-btn accept-btn" id="accept-cookie">Прийняти</button>
+<button class="cookie-btn cancel-btn" id="cancel-cookie">Скасувати</button>
+</div>
+</div>
+<script src="js/cookie-notice.js"></script>
+<!-- === БЛОК С БАННЕРОМ === -->
+<a class="banner-fixed" href="" target="_blank">
+<img alt="Розіграш" onerror="this.style.display='none'" src="images/concurs.png">
+</img></a>
+<!-- === КОНЕЦ БАННЕРА === -->
+</body>
+</html>
+
+
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/aos.min.js"></script>
+<script src="js/swiper-bundle.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+        $(document).ready(function() {
+           // Виконуємо AJAX-запит при завантаженні сторінки
+           fetch('script.php')
+           .then(response => response.json())
+           .then(data => {
+              // Получено ответ с сервера
+              // Здесь вы можете продолжить обработку ответа
+    
+              // Например, обновить значение 'online' на странице
+              var onlineCount1 = data.servers[0].online;
+              var onlineMax1 = data.servers[0].maxonline;
+            //   var onlineCount2 = data[1].online;
+            //   var serversCountElement = document.getElementById('serversCount');
+            //   var serversMaxElement = document.getElementById('serversMax');
+              if (document.getElementById('serverCount1')) {
+                 document.getElementById('serverCount1').textContent = onlineCount1;
+                 document.getElementById('serverMax1').textContent = onlineMax1;
+              }
+           })
+           .catch(error => {
+              // Возникла ошибка во время выполнения запроса
+              console.log('Ошибка запроса:', error);
+           });
+        });
+     </script>
+
